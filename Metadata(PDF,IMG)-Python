@@ -15,6 +15,7 @@ from pyPdf import PdfFileReader#
 #_author_ = 'Danny Rojas (Rojas Knight)'
 #
 #
+#
 def main():
 	# Colors
 	color = {"blue": "\033[94m", "red": "\033[91m", "green": "\033[92m", "defecto": "\033[0m", "yellow": "\033[93m"}
@@ -27,14 +28,19 @@ def main():
 		else:
 			pass
 	clear()
-
-	def main(): #  HEADER
-		print ""
-		print "\t\t-----------------" + color['blue'] + "Extract Metadata" + color["defecto"] + "-------------"
-		print "\t\tx     Tools Pentesting                       x"
-		print "\t\tx     Developed by: @RojasKnight             x"
-		print "\t\tx     Happy Hacker                           x"
-		print "\t\t----------------------------------------------\n\n"
+#  HEADER
+	def main():
+		print "\t\t  +=======================================+"
+		print "\t\t  |.........." + color["blue"] + "Extract Metadata"  + color["defecto"] + ".............|"
+		print "\t\t  +---------------------------------------+"
+		print "\t\t  |" + color["red"] + "#Author: Danny Rojas" + color["defecto"] +"                   |" 
+		print "\t\t  |" + color["red"] + "#Contact: www.fb.com/RojasKnigth" + color["defecto"] + "       |"
+		print "\t\t  |" + color["red"] + "#Date: 29/07/2015 " + color["defecto"] + "                     |"
+		print "\t\t  |" + color["red"] + "#This tool is made for pentesting." + color["defecto"] +"     |"
+		print "\t\t  |" + color["red"] + "#Hacking is not a crime, is an art" + color["defecto"] +"     |"
+		print "\t\t  +=======================================+"
+		print "\t\t  |............Extract Metadata...........|"
+		print "\t\t  +---------------------------------------+"
 		print ""
 
 	def crush(): # MENU DE OPCIONES
@@ -68,6 +74,7 @@ def main():
 		metadata_pdf = info.getDocumentInfo()
 		main()
 		print ("METADATOS DE, " + str(pdf).upper()).center(80)
+		print ""
 		for meta_info in metadata_pdf:
 			print color["red"] + "[+] " + color["defecto"] + meta_info[1:] + ":" + metadata_pdf[meta_info]
 
@@ -96,4 +103,12 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
+
+
+
+
+
+
+
 
