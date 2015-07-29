@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Pentest Tools!
+#
+############
+import os  #
+import sys ###########
+from PIL import Image ########
+from PIL.ExifTags import TAGS###
+from pyPdf import PdfFileReader#
+################################
+#
+#
+#_author_ = 'Danny Rojas (Rojas Knight)'
+#
+#
+def main():
+	# Colors
+	color = {"blue": "\033[94m", "red": "\033[91m", "green": "\033[92m", "defecto": "\033[0m", "yellow": "\033[93m"}
+
+	def clear():
+		if "linux" in sys.platform:
+			os.system("clear")
+		elif "Wid" in sys.platform:
+			os.system("cls")
+		else:
+			pass
+	clear()
+
+	def main(): #  HEADER
+		print ""
+		print "\t\t-----------------" + color['blue'] + "Extract Metadata" + color["defecto"] + "-------------"
+		print "\t\tx     Tools Pentesting                       x"
+		print "\t\tx     Developed by: @RojasKnight             x"
+		print "\t\tx     Happy Hacker                           x"
+		print "\t\t----------------------------------------------\n\n"
+		print ""
+
+	def crush(): # MENU DE OPCIONES
+		print color["defecto"] + "1) " + color["blue"] + "Extract Metadata PDF"
+		print color["defecto"] + "2) " + color["blue"] + "Extract Metadata IMG" + color["defecto"]
+		print color["defecto"] + "3) " + color["blue"] + "Exit " + color["defecto"]
+		print "\n"
+
+	def metadata_img(img):
+		data = Image.open(img)
+		info = data._getexif()
+		metadata = dict()
+		for tag, valores in info.items():
+			code = TAGS.get(tag,tag)
+			metadata[code] = valores
+		if metadata == None:
+			print "[x] La Imagen No Existe"
+			exit(0)
+		else:
+			print "\n"
+			main()
+			print ("METADATOS DE, " + str(img).upper()).center(80)
+			print ""
+
+			for meta_items in metadata:
+				print color["red"] + "[+]"+ color["defecto"] +str(meta_items) + ":" + str(metadata[meta_items])
+		
+	def metadata_pdf(pdf):
+
+		info = PdfFileReader(file(pdf,"rb"))
+		metadata_pdf = info.getDocumentInfo()
+		main()
+		print ("METADATOS DE, " + str(pdf).upper()).center(80)
+		for meta_info in metadata_pdf:
+			print color["red"] + "[+] " + color["defecto"] + meta_info[1:] + ":" + metadata_pdf[meta_info]
+
+	def menu():
+		main()
+		crush()
+		try:
+
+			options = int(raw_input("[+] Insert Option #> "))
+			if options == 1:
+				pdf = raw_input("\t" + color["red"] + "[+]"+ "Inserta El Nombre Del PDF #> " + color["defecto"])
+				clear()
+				metadata_pdf(pdf)
+			elif options == 2:
+				img = raw_input("\t" + color["red"] + "[+]"+ "Inserta El Nombre De La Imagen #> " + color["defecto"])
+				clear()
+				metadata_img(img)
+			elif options == 3:
+				clear()
+				exit(0)
+
+		except Exception, Error:
+			print color["red"] + "[x]Error, Try Again Friend :) ", Error , color["defecto"]
+			exit(0)	
+	menu()
+
+if __name__ == '__main__':
+	main()
+
