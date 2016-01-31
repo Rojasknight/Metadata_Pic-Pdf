@@ -13,7 +13,7 @@ from pyPdf import PdfFileReader#
 #
 #
 #_author_ = 'Danny Rojas (Rojas Knight)'
-#
+#_Date_ = '29-7-15'
 #
 #
 def main():
@@ -28,6 +28,8 @@ def main():
 		else:
 			pass
 	clear()
+	
+	
 #  HEADER
 	def main():
 		print "\t\t  +=======================================+"
@@ -100,7 +102,6 @@ def main():
 			print color["red"] + "[x]Error, Try Again Friend :) ", Error , color["defecto"]
 			exit(0)	
 	menu()
-
 if __name__ == '__main__':
 	main()
 
